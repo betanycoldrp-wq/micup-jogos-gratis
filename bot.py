@@ -422,9 +422,10 @@ def executar():
         publicar(j)
 
         if not TESTE:
-             historico[chave_jogo(j)] = (
+            historico[chave_jogo(j)] = (
                 f"{j['moeda']}:{j['atual']:.2f}"
             )
+
             HISTORICO.write_text(
                 json.dumps(
                     historico,
@@ -432,8 +433,7 @@ def executar():
                     indent=2
                 ),
                 encoding="utf-8"
-            )
-
+            ) 
     print("Ofertas selecionadas:", len(selecionados))
     print("Distribuicao:", contagem)
     print("Modo teste:", TESTE)
