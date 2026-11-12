@@ -29,7 +29,6 @@ def consultar():
                 "storeID": codigo,
                 "onSale": 1,
                 "pageSize": 60,
-                "sortBy": "Recent"
             },
             timeout=30
         )
