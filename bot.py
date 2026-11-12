@@ -16,7 +16,7 @@ LOJAS = {
     "25": "Epic Games"
 }
 
-LIMITE = 8
+LIMITE = 1
 
 
 
