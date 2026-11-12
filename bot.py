@@ -1,20 +1,28 @@
 
+import os
 import requests
 
-URL = "https://store-site-backend-static.ak.epicgames.com/freeGamesPromotions"
+webhook = os.environ.get("MICUP_WEBHOOK_URL")
 
-def buscar_jogos_gratis():
-    resposta = requests.get(
-        URL,
-        params={"locale": "pt-BR", "country": "BR"},
-        timeout=20
+if not webhook:
+    raise RuntimeError("Webhook nao configurado")
+
+mensagem = {
+    "content": (
+        "🎮 TESTE BRASIL GAMERS\n\n"
+        "O sistema de avisos de jogos gratis "
+        "esta sendo configurado!\n\n"
+        "Em breve, novidades da Epic Games."
     )
-    resposta.raise_for_status()
+}
 
-    jogos = resposta.json()["data"]["Catalog"]["searchStore"]["elements"]
+resposta = requests.post(
+    webhook,
+    json=mensagem,
+    timeout=20
+)
 
-    for jogo in jogos:
-        print(jogo["title"])
+print("Status HTTP:", resposta.status_code)
+print("Resposta:", resposta.text[:500])
 
-if __name__ == "__main__":
-    buscar_jogos_gratis()
+resposta.raise_for_status()
