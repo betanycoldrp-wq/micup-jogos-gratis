@@ -118,22 +118,46 @@ def executar():
             )
         )
 
-        mensagem = (
-            f"**{titulo}**\n\n"
-            f"🎮 **{jogo['title']}**\n"
-            f"🛒 Loja: {jogo['loja']}\n"
-            f"💰 De US$ {normal:.2f} "
-            f"por **{preco_texto}**\n"
-            f"🏷️ Desconto: {desconto}%\n\n"
-            f"🔗 {link}\n\n"
-            "🇧🇷 Brasil Gamers | Ofertas"
+        
+        imagem = jogo.get("thumb", "")
+
+        descricao = (
+            f"🎮 **{jogo['title']}**\n\n"
+            f"🛒 **Loja:** {jogo['loja']}\n"
+            f"💰 **Preço original:** US$ {normal:.2f}\n"
+            f"💵 **Oferta:** {preco_texto}\n"
+            f"🏷️ **Desconto:** {desconto}% OFF\n\n"
+            f"🔗 [Ver oferta]({link})"
         )
 
+        embed = {
+            "title": (
+                "🎁 JOGO GRÁTIS!"
+                if gratuito
+                else "🔥 OFERTA DE JOGO!"
+            ),
+            "description": descricao,
+            "color": 5763719 if gratuito else 3447003,
+            "footer": {
+                "text": "Brasil Gamers | Ofertas"
+            }
+        }
+
+        if imagem:
+            embed["image"] = {"url": imagem}
+
+        mensagem = {
+            "embeds": [embed]
+        }
+
+
+        
         resposta = requests.post(
             WEBHOOK,
-            json={"content": mensagem},
+            json=mensagem,
             timeout=30
         )
+
         resposta.raise_for_status()
 
         historico[identificador] = assinatura
