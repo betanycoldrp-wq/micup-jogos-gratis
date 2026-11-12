@@ -22,5 +22,7 @@ jobs:
       - name: Instalar dependencias
         run: pip install requests
 
-      - name: Consultar Epic Games
+      - name: Executar bot
+        env:
+          MICUP_WEBHOOK_URL: ${{ secrets.MICUP_WEBHOOK_URL }}
         run: python bot.py
