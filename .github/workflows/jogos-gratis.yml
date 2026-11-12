@@ -34,7 +34,7 @@ jobs:
       - name: Executar bot
         env:
           MICUP_WEBHOOK_URL: ${{ secrets.MICUP_WEBHOOK_URL }}
-          TEST_MODE: "true"
+          TEST_MODE: "false"
         run: python bot.py
 
       - name: Salvar historico
