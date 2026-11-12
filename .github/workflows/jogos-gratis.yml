@@ -6,6 +6,13 @@ on:
     - cron: '0 */6 * * *'
   workflow_dispatch:
 
+permissions:
+  contents: write
+
+concurrency:
+  group: jogos-gratis
+  cancel-in-progress: false
+
 jobs:
   verificar-jogos:
     runs-on: ubuntu-latest
@@ -13,6 +20,8 @@ jobs:
     steps:
       - name: Baixar arquivos
         uses: actions/checkout@v4
+        with:
+          persist-credentials: true
 
       - name: Preparar Python
         uses: actions/setup-python@v5
@@ -26,3 +35,15 @@ jobs:
         env:
           MICUP_WEBHOOK_URL: ${{ secrets.MICUP_WEBHOOK_URL }}
         run: python bot.py
+
+      - name: Salvar historico
+        run: |
+          if [ -f jogos_enviados.json ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add jogos_enviados.json
+            if ! git diff --cached --quiet; then
+              git commit -m "Atualizar historico de ofertas"
+              git push
+            fi
+          fi
