@@ -19,26 +19,48 @@ LOJAS = {
 LIMITE = 8
 
 
+
 def consultar():
     ofertas = []
 
     for codigo, loja in LOJAS.items():
+        print(f"Consultando {loja}...", flush=True)
+
         resposta = requests.get(
             API,
             params={
                 "storeID": codigo,
                 "onSale": 1,
-                "pageSize": 60,
+                "pageSize": 20
             },
             timeout=30
         )
-        resposta.raise_for_status()
 
-        for item in resposta.json():
+        print(
+            f"{loja}: HTTP {resposta.status_code}",
+            flush=True
+        )
+
+        if resposta.status_code != 200:
+            print(
+                "Detalhes:",
+                resposta.text[:500],
+                flush=True
+            )
+            continue
+
+        dados = resposta.json()
+        print(
+            f"{loja}: {len(dados)} ofertas",
+            flush=True
+        )
+
+        for item in dados:
             item["loja"] = loja
             ofertas.append(item)
 
     return ofertas
+
 
 
 def executar():
