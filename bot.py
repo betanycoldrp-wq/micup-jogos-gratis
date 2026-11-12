@@ -279,6 +279,51 @@ def executar():
         )
 
     candidatos = ofertas_gratis_epic() + ofertas_cheapshark()
+    # Evitar duplicações entre fontes diferentes
+    # Prioriza jogos gratuitos da Epic Games Brasil.
+    import re
+    import unicodedata
+
+    def normalizar_titulo(titulo):
+        titulo = unicodedata.normalize("NFKD", titulo)
+        titulo = "".join(
+            c for c in titulo
+            if not unicodedata.combining(c)
+        )
+        titulo = titulo.casefold()
+        return re.sub(r"[^a-z0-9]+", "", titulo)
+
+    unicos = {}
+
+    for jogo in candidatos:
+        chave = (
+            jogo["loja"].casefold(),
+            normalizar_titulo(jogo["titulo"])
+        )
+
+        anterior = unicos.get(chave)
+
+        if anterior is None:
+            unicos[chave] = jogo
+            continue
+
+        # Preferir a oferta gratuita e regional
+        def prioridade(item):
+            return (
+                item["atual"] == 0,
+                item["moeda"] == "BRL"
+            )
+
+        if prioridade(jogo) > prioridade(anterior):
+            unicos[chave] = jogo
+
+    candidatos = list(unicos.values())
+
+    print(
+        f"Ofertas após remover duplicações: "
+        f"{len(candidatos)}"
+    )
+
 
     # Consultar preços brasileiros dos candidatos Steam
     consultas = 0
