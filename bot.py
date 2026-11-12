@@ -27,15 +27,17 @@ def consultar():
         print(f"Consultando {loja}...", flush=True)
 
         resposta = requests.get(
-            API,
-            params={
-                "storeID": codigo,
-                "onSale": 1,
-                "pageSize": 20
-            },
-            timeout=30
-        )
-
+    API,
+    params={
+        "storeID": codigo,
+        "onSale": 1,
+        "pageSize": 20
+    },
+    headers={
+        "User-Agent": "BrasilGamers-OfertasBot/1.0 (GitHub Actions; contato: administrador do projeto)"
+    },
+    timeout=30
+)
         print(
             f"{loja}: HTTP {resposta.status_code}",
             flush=True
