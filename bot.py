@@ -270,6 +270,27 @@ def publicar(jogo):
     resposta.raise_for_status()
     time.sleep(2)
 
+def chave_jogo(jogo):
+    import re
+    import unicodedata
+
+    titulo = unicodedata.normalize(
+        "NFKD", jogo["titulo"]
+    )
+
+    titulo = "".join(
+        c for c in titulo
+        if not unicodedata.combining(c)
+    )
+
+    titulo = re.sub(
+        r"[^a-z0-9]+", "",
+        titulo.casefold()
+    )
+
+    loja = jogo["loja"].casefold()
+
+    return f"v2:{loja}:{titulo}"
 
 def executar():
     historico = {}
@@ -368,7 +389,7 @@ def executar():
 
     def pendente(j):
         chave = f"{j['moeda']}:{j['atual']:.2f}"
-        return historico.get(j["id"]) != chave
+        return historico.get(chave_jogo(j)) != chave
 
     def adicionar(j):
         if j["id"] in ids or not pendente(j):
@@ -401,7 +422,7 @@ def executar():
         publicar(j)
 
         if not TESTE:
-            historico[j["id"]] = (
+             historico[chave_jogo(j)] = (
                 f"{j['moeda']}:{j['atual']:.2f}"
             )
             HISTORICO.write_text(
