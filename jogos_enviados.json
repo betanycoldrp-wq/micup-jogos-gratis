@@ -35,7 +35,7 @@
   "v2:gog:killerisdeadnightmareedition": "USD:1.99",
   "v2:gog:owlboy": "USD:3.99",
   "v2:steam:beholder": "BRL:4.44",
-  "v2:steam:borderlands2": "BRL:4.49",
+  "v2:steam:borderlands2": "BRL:14.99",
   "v2:epic games:hotwheelsunleashed2turbocharged": "USD:5.99",
   "v2:epic games:finalfantasyviirebirth": "USD:7.49",
   "v2:gog:absolver": "USD:2.99",
@@ -278,5 +278,12 @@
   "v2:steam:joedeverslonewolfhdremastered": "BRL:4.99",
   "v2:steam:deadspace": "BRL:24.90",
   "v2:steam:starwarssquadrons": "BRL:19.90",
-  "v2:steam:sidmeierscivilizationvi": "BRL:12.90"
+  "v2:steam:sidmeierscivilizationvi": "BRL:12.90",
+  "v2:steam:metroexodus": "BRL:14.90",
+  "v2:steam:chorus": "BRL:12.40",
+  "v2:epic games:farcry6gameoftheyearedition": "USD:29.99",
+  "v2:epic games:starwarsoutlawsultimateedition": "USD:32.49",
+  "v2:steam:redfactionarmageddon": "BRL:9.90",
+  "v2:steam:nobodywantstodie": "BRL:12.40",
+  "v2:steam:deusexmankinddivided": "BRL:18.74"
 }
