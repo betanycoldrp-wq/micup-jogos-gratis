@@ -150,7 +150,7 @@
   "v2:gog:chorus": "USD:2.49",
   "v2:gog:oldworld": "USD:3.99",
   "v2:gog:forgottonanne": "USD:2.19",
-  "v2:gog:frostpunk": "USD:4.49",
+  "v2:gog:frostpunk": "USD:2.99",
   "v2:gog:shadowsawakening": "USD:2.99",
   "v2:gog:falloutfranchisebundle": "USD:21.95",
   "v2:epic games:fatalfurycityofthewolveslegendedition": "USD:9.99",
@@ -355,5 +355,12 @@
   "v2:steam:unityofcommandii": "BRL:8.89",
   "v2:epic games:papertrail": "USD:5.99",
   "v2:gog:syberiaii": "USD:1.29",
-  "v2:gog:steamworldheist": "USD:1.49"
+  "v2:gog:steamworldheist": "USD:1.49",
+  "v2:steam:blackguards2": "BRL:1.89",
+  "v2:steam:deponia": "BRL:1.99",
+  "v2:gog:thiswarofmine": "USD:1.99",
+  "v2:steam:thedarkeyechainsofsatinav": "BRL:2.49",
+  "v2:steam:unstoppablegorg": "BRL:3.29",
+  "v2:steam:deponiadoomsday": "BRL:3.69",
+  "v2:gog:europauniversalisiv": "USD:4.99"
 }
