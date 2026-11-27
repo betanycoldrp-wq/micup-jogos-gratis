@@ -386,5 +386,13 @@
   "v2:epic games:mypetsupermarket": "USD:2.99",
   "v2:gog:expeditionsbundle": "USD:24.85",
   "v2:gog:elexfranchisepack": "USD:19.89",
-  "v2:gog:destroyallhumansfranchisepack": "USD:19.95"
+  "v2:gog:destroyallhumansfranchisepack": "USD:19.95",
+  "v2:steam:evilgenius": "BRL:1.99",
+  "v2:steam:hamiltonsgreatadventure": "BRL:3.29",
+  "v2:gog:thewitcher3wildhuntremastered": "USD:19.99",
+  "v2:steam:flyn": "BRL:3.99",
+  "v2:steam:battlezone98redux": "BRL:4.59",
+  "v2:steam:titansouls": "BRL:4.69",
+  "v2:steam:ruiner": "BRL:5.99",
+  "v2:steam:warhammervermintide2": "BRL:8.89"
 }
